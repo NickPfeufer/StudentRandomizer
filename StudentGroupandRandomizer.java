@@ -58,8 +58,6 @@ class StudentGroupandRandomizer {
 
 	}
 
-
-
 	public static void main(String[] args) {
 		StudentGroupandRandomizer a = new StudentGroupandRandomizer();
 		System.out.println();
@@ -71,6 +69,5 @@ class StudentGroupandRandomizer {
 		System.out.println();
 		a.groupStudents(5);
 	}
-
 
 }
