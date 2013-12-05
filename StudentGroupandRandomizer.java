@@ -1,0 +1,75 @@
+import java.util.Random;
+import java.io.File;
+import java.io.IOException;
+import java.io.FileReader;
+import java.util.Scanner;
+
+class StudentGroupandRandomizer {
+	Scanner reader = null;
+	Random r = new Random();
+	String[] x;
+
+
+	public StudentGroupandRandomizer(){
+		try{
+			this.reader = new Scanner(new File("class.csv"));
+		}catch(IOException e){
+			System.out.println("class.csv not found");
+		}
+		this.x = readFile();		
+	}
+
+
+	public String[] readFile(){
+		//reads number of students and makes an apropriate length array
+		String[] students = new String[reader.nextInt()];
+		//deals with the entered line,
+		reader.nextLine();
+		//sets the entire array
+		students = reader.nextLine().split(",");
+		return students;
+	}
+
+	public void randomStudent(){
+		//prints a random student, dynamic range
+		System.out.println(this.x[this.r.nextInt(this.x.length)]);
+	}
+	public void groupStudents(int size){
+		String temp;
+		int j;
+		//shuffle students code modled from blackjack
+		for (int i = x.length-1; i>=0; i--) {
+			j = r.nextInt(i+1);
+			temp = x[i];
+			x[i] = x[j];
+			x[j] = temp;
+		}
+		//print them out in the new order seperated by spaces at the aprroptiate place
+		for (int b = 0; b<x.length; b++) {
+			for (int k = 0; k<size; k++) {
+				if (b<x.length) {
+					System.out.println(x[b]);
+					b++;
+				}
+			}
+			System.out.println();
+		}
+
+	}
+
+
+
+	public static void main(String[] args) {
+		StudentGroupandRandomizer a = new StudentGroupandRandomizer();
+		System.out.println();
+		System.out.println("Random Student:");
+		System.out.println();
+		a.randomStudent();
+		System.out.println();
+		System.out.println("Groups of 5:");
+		System.out.println();
+		a.groupStudents(5);
+	}
+
+
+}
