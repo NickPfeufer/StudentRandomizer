@@ -45,7 +45,8 @@ class StudentGroupandRandomizer {
 			x[j] = temp;
 		}
 		//print them out in the new order seperated by spaces at the aprroptiate place
-		for (int b = 0; b<x.length; b++) {
+		int b = 0;
+		while (b<x.length) {
 			for (int k = 0; k<size; k++) {
 				if (b<x.length) {
 					System.out.println(x[b]);
